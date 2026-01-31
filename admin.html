@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Prime Maintenance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1>
+                <i class="fas fa-tools"></i>
+                Prime Maintenance - Admin Panel
+            </h1>
+            <a href="index.html" class="logout-btn">
+                <i class="fas fa-home"></i>
+                View Website
+            </a>
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="alertContainer"></div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-project-diagram"></i>
+                <h3 id="projectCount">0</h3>
+                <p>Total Projects</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-comments"></i>
+                <h3 id="testimonialCount">0</h3>
+                <p>Testimonials</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <h3 id="customerCount">-</h3>
+                <p>Total Customers</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-video"></i>
+                <h3 id="cameraCount">-</h3>
+                <p>Cameras Installed</p>
+            </div>
+        </div>
+
+        <!-- Admin Cards Grid -->
+        <div class="admin-grid">
+            <!-- Project Management -->
+            <div class="admin-card" style="grid-column: span 2;">
+                <h2>
+                    <i class="fas fa-project-diagram"></i>
+                    Projects Management
+                </h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <div class="form-group">
+                            <label>Project Title *</label>
+                            <input type="text" id="projectTitle" placeholder="e.g., Villa CCTV Installation">
+                        </div>
+                        <div class="form-group">
+                            <label>Project Category *</label>
+                            <select id="projectCategory">
+                                <option value="CCTV Installation">CCTV Installation</option>
+                                <option value="Electrical Work">Electrical Work</option>
+                                <option value="IT Solutions">IT Solutions</option>
+                                <option value="Complete Setup">Complete Setup</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="projectLocation" placeholder="e.g., DHA Phase 5, Lahore">
+                        </div>
+                        <div class="form-group">
+                            <label>Description *</label>
+                            <textarea id="projectDescription" rows="4" placeholder="Describe the project work..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Project Photos</label>
+                            <div class="file-upload-area" onclick="document.getElementById('projectImagesInput').click()">
+                                <i class="fas fa-images"></i>
+                                <p>Upload multiple photos</p>
+                            </div>
+                            <input type="file" id="projectImagesInput" accept="image/*" multiple style="display: none;">
+                        </div>
+                    </div>
+                    <div>
+                        <div id="projectImagesPreview" class="preview-grid"></div>
+                    </div>
+                </div>
+                <button class="btn btn-success" onclick="addProject()" style="width: 100%; margin-top: 15px;">
+                    <i class="fas fa-plus"></i>
+                    Add Project
+                </button>
+                
+                <h3 style="margin-top: 30px; color: var(--primary-dark); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px;">
+                    <i class="fas fa-list"></i> All Projects
+                </h3>
+                <div id="projectsList" style="margin-top: 20px;"></div>
+            </div>
+
+            <!-- Testimonial Management -->
+            <div class="admin-card">
+                <h2>
+                    <i class="fas fa-quote-left"></i>
+                    Testimonials Management
+                </h2>
+                <div class="form-group">
+                    <label>Client Name *</label>
+                    <input type="text" id="clientName" placeholder="Enter client name">
+                </div>
+                <div class="form-group">
+                    <label>Client Title/Role</label>
+                    <input type="text" id="clientTitle" placeholder="e.g., Homeowner, Business Owner">
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <select id="clientRating">
+                        <option value="5">5 Stars ⭐⭐⭐⭐⭐</option>
+                        <option value="4">4 Stars ⭐⭐⭐⭐</option>
+                        <option value="3">3 Stars ⭐⭐⭐</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Testimonial Message *</label>
+                    <textarea id="clientMessage" rows="4" placeholder="Enter testimonial message"></textarea>
+                </div>
+                <button class="btn btn-success" onclick="addTestimonial()" style="width: 100%;">
+                    <i class="fas fa-plus"></i>
+                    Add Testimonial
+                </button>
+                <div class="testimonial-list" id="testimonialList" style="margin-top: 20px;"></div>
+            </div>
+
+            <!-- Google Sheets Integration -->
+            <div class="admin-card">
+                <h2>
+                    <i class="fab fa-google"></i>
+                    Google Sheets Statistics
+                </h2>
+                <p style="color: #666; margin-bottom: 15px; font-size: 0.95rem;">
+                    Connect Google Sheets to show live statistics on your website
+                </p>
+                <div class="form-group">
+                    <label>Google Sheets URL *</label>
+                    <input type="text" id="googleSheetsUrl" placeholder="https://docs.google.com/spreadsheets/d/...">
+                    <small style="color: #666; display: block; margin-top: 5px;">
+                        Make sure sheet is public (Anyone with link can view)
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label>Sheet Name (tab name)</label>
+                    <input type="text" id="sheetName" value="Stats" placeholder="Stats">
+                </div>
+                
+                <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <strong style="color: var(--primary-blue);">📋 Your Sheet Format:</strong>
+                    <table style="width: 100%; margin-top: 10px; font-size: 0.9rem; border-collapse: collapse;">
+                        <tr style="background: var(--white);">
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Column A</strong></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Column B</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Total Customers</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">150</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Completed Projects</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">230</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Cameras Installed</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">850</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Area Covered (sq ft)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">50000</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <button class="btn btn-success" onclick="testGoogleSheets()" style="width: 100%; margin-bottom: 10px;">
+                    <i class="fas fa-flask"></i>
+                    Test Connection
+                </button>
+                <button class="btn btn-primary" onclick="saveGoogleSheets()" style="width: 100%;">
+                    <i class="fas fa-save"></i>
+                    Save Configuration
+                </button>
+                
+                <div id="sheetsTestResult" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="admin-card">
+            <h2>
+                <i class="fas fa-question-circle"></i>
+                How to Use Admin Panel
+            </h2>
+            <div style="line-height: 1.8;">
+                <h3 style="color: var(--primary-blue); margin-top: 15px;">� Projects Management:</h3>
+                <ol style="margin-left: 20px;">
+                    <li>Fill in project details (title, category, location, description)</li>
+                    <li>Upload project photos (at least 1 required)</li>
+                    <li>Click "Add Project" to save</li>
+                    <li>Project will appear in the list below and on your website</li>
+                    <li>Click "Delete" to remove a project</li>
+                </ol>
+
+                <h3 style="color: var(--primary-blue); margin-top: 15px;">💬 Testimonials Management:</h3>
+                <ol style="margin-left: 20px;">
+                    <li>Fill in client name, title/role, and testimonial message</li>
+                    <li>Select a rating (1-5 stars)</li>
+                    <li>Click "Add Testimonial"</li>
+                    <li>Testimonial will appear on your website immediately</li>
+                    <li>Click delete button to remove a testimonial</li>
+                </ol>
+
+                <h3 style="color: var(--primary-blue); margin-top: 15px;">📊 Google Sheets Integration:</h3>
+                <ol style="margin-left: 20px;">
+                    <li>Create a public Google Sheet with your statistics</li>
+                    <li>Copy the sheet URL and paste it in the Google Sheets section</li>
+                    <li>Click "Test Connection" to verify</li>
+                    <li>Your live statistics will display on the website</li>
+                </ol>
+
+                <p style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-left: 4px solid var(--primary-blue); border-radius: 5px;">
+                    <strong>Tip:</strong> All data is stored in Supabase database. Your content is safe and persistent.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

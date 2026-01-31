@@ -1,0 +1,23 @@
+{
+  "name": "prime-maintenance-website",
+  "version": "1.0.0",
+  "description": "Prime Maintenance - Professional Electrical, CCTV & IT Services in Lahore",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "electrical",
+    "cctv",
+    "it-services",
+    "maintenance",
+    "lahore"
+  ],
+  "author": "Abdullah - Prime Maintenance",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.11"
+  }
+}

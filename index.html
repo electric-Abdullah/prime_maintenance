@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Prime Maintenance - Expert Electrical, CCTV & IT Maintenance Services in Lahore. Quick response time, certified technician, quality guaranteed.">
+    <meta name="keywords"
+        content="electrical services lahore, cctv installation lahore, IT maintenance, emergency electrician, prime maintenance">
+    <title>Prime Maintenance | Expert Electrical & CCTV Services in Lahore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">
+                    <i class="fas fa-tools"></i>
+                    <span class="logo-text">Prime <span class="logo-accent">Maintenance</span></span>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Projects</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#why-choose">Why Choose Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="tel:03111041491" class="nav-cta"><i class="fas fa-phone"></i> Emergency</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Certified & Licensed Technician</span>
+                </div>
+                <h1 class="hero-title">Prime Maintenance</h1>
+                <p class="hero-subtitle">Your Trusted Partner for Electrical, CCTV & IT Solutions in Lahore</p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Quick Response Time</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-moon"></i>
+                        <span>After-Hours Available</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-certificate"></i>
+                        <span>Quality Guaranteed</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i> Get a Free Quote
+                    </a>
+                    <a href="https://wa.me/923111041491" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#services">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="highlight">Services</span></h2>
+                <p class="section-subtitle">Click on a service to view our completed projects</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- CCTV Services -->
+                <div class="service-card" data-category="CCTV Installation" onclick="filterProjectsByService(this)">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="service-title">CCTV Solutions</h3>
+                    <p class="service-description">Advanced security camera systems for complete peace of mind</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Professional Installation</li>
+                        <li><i class="fas fa-check"></i> System Maintenance</li>
+                        <li><i class="fas fa-check"></i> Monitoring Setup</li>
+                        <li><i class="fas fa-check"></i> Camera Upgrades</li>
+                        <li><i class="fas fa-check"></i> Remote Access Configuration</li>
+                    </ul>
+                </div>
+
+                <!-- Electrical Services -->
+                <div class="service-card featured" data-category="Electrical Work"
+                    onclick="filterProjectsByService(this)">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="service-title">Electrical Services</h3>
+                    <p class="service-description">Expert electrical solutions for residential and commercial properties
+                    </p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Wiring & Rewiring</li>
+                        <li><i class="fas fa-check"></i> Lighting Installation</li>
+                        <li><i class="fas fa-check"></i> Panel Upgrades</li>
+                        <li><i class="fas fa-check"></i> Fault Diagnosis</li>
+                        <li><i class="fas fa-check"></i> Emergency Repairs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <p>Need a custom solution? We're here to help!</p>
+                <a href="#contact" class="btn btn-primary">Request a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="highlight">Projects</span></h2>
+                <p class="section-subtitle" id="gallerySubtitle">Check out some of our recent completed projects</p>
+            </div>
+            <div class="gallery-controls" id="galleryControls"
+                style="display: none; text-align: center; margin-bottom: 30px;">
+                <button class="btn btn-primary" onclick="resetProjectFilter()">
+                    <i class="fas fa-times"></i> Clear Filter
+                </button>
+            </div>
+            <div class="projects-container" id="projectsContainer">
+                <div class="gallery-placeholder">
+                    <i class="fas fa-project-diagram"></i>
+                    <p>Projects will appear here once added</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Client <span class="highlight">Testimonials</span></h2>
+                <p class="section-subtitle">What our satisfied clients say about us</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-placeholder">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Client testimonials coming soon</p>
+                        <p class="testimonial-note">We invite our valued clients to share their experiences</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-placeholder">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Client testimonials coming soon</p>
+                        <p class="testimonial-note">We invite our valued clients to share their experiences</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-placeholder">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Client testimonials coming soon</p>
+                        <p class="testimonial-note">We invite our valued clients to share their experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span class="highlight">Prime Maintenance</span>?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Quick Response</h3>
+                    <p>Fast response times to get your systems back up and running</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>After-Hours Service</h3>
+                    <p>Available when you need us, including evenings and weekends</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certified Technician</h3>
+                    <p>Licensed and certified professional with proven expertise</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Quality Guarantee</h3>
+                    <p>We stand behind our work with a quality service guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Bar Section -->
+    <section id="contact" class="contact-bar">
+        <div class="container">
+            <div class="contact-bar-content">
+                <div class="contact-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <a href="tel:03111041491">0311-1041491</a>
+                    </div>
+                </div>
+                <div class="contact-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="mailto:abdullah.lighting.engineer@gmail.com">info@primemaintenance.com</a>
+                    </div>
+                </div>
+                <div class="contact-bar-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Lahore, Punjab, Pakistan</p>
+                    </div>
+                </div>
+                <div class="contact-bar-item">
+                    <a href="https://wa.me/923111041491" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Prime Maintenance</h3>
+                    <p>Expert Electrical & CCTV Services in Lahore. Facing a power fault or need a security upgrade?
+                        Prime Maintenance specializes in precision electrical installations and advanced CCTV
+                        configurations. We troubleshoot, repair, and maintain your systems so you never have to worry
+                        about downtime or safety. Professional service you can depend on.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Projects</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#why-choose">Why Choose Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">CCTV Installation</a></li>
+                        <li><a href="#services">Electrical Services</a></li>
+                        <li><a href="#services">Emergency Repairs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Prime Maintenance. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> for Professional Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923111041491" class="whatsapp-float" target="_blank" ari

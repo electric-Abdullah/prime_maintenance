@@ -117,27 +117,27 @@ app.post('/api/supabase', async (req, res) => {
 
         const response = await fetch(url, options);
         // ... existing code above ...
-console.log(`🔗 Calling: ${method} ${url.split('?')[0]}`);
+    console.log(`🔗 Calling: ${method} ${url.split('?')[0]}`);
 
-const response = await fetch(url, options);
+    const response = await fetch(url, options);
 
-// --- START OF FIX ---
-let responseData = {};
-
-// Check if the response actually has content (204 means No Content)
-const text = await response.text();
-if (text) {
-    try {
-        responseData = JSON.parse(text);
-    } catch (e) {
-        console.error("Failed to parse JSON:", text);
-        responseData = { message: text };
+    // --- START OF FIX ---
+    let responseData = {};
+    
+    // Check if the response actually has content (204 means No Content)
+    const text = await response.text();
+    if (text) {
+        try {
+            responseData = JSON.parse(text);
+        } catch (e) {
+            console.error("Failed to parse JSON:", text);
+            responseData = { message: text };
+        }
+    } else {
+        // If it's empty but successful (like a delete or insert), return a success object
+        responseData = { success: true, status: response.status };
     }
-} else {
-    // If it's empty but successful (like a delete or insert), return a success object
-    responseData = { success: true, status: response.status };
-}
-// --- END OF FIX ---
+    // --- END OF FIX ---
 
 if (!response.ok) {
     console.error(`❌ Supabase error (${response.status}):`, responseData);
